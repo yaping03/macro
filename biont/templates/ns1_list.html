@@ -1,0 +1,99 @@
+{% load filters %}
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/Dashboard%20Template%20for%20Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        a{
+            text-decoration: none;
+{#            color:#fff;#}
+            font-family:"microsoft yahei","SF Pro SC","SF Pro Display","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+        .line {
+            line-height: 25px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
+    <div class="h3">Subtype</div>
+        <div class="h4 line">
+            {% for seq in seqs %}
+                {% if seq.0 %}
+                    &nbsp;&nbsp;<a href="/show/ns1/Subtype={{ seq.0 }}">{{ seq.0 }}</a>&nbsp;&nbsp;
+                {% endif %}
+            {% endfor %}
+        </div>
+    <div class="h3">Collection_year</div>
+        <div class="h4 line">
+            {% for cy in cys %}
+                {% if cy.0 %}
+                    &nbsp;&nbsp;<a href="/show/ns1/Collection_year={{ cy.0 }}">{{ cy.0 }}</a>&nbsp;&nbsp;
+                {% endif %}
+            {% endfor %}
+        </div>
+    <div class="h3">Host</div>
+        <div class="h4 line">
+            {% for ct in cts %}
+                {% if ct.0 %}
+                    &nbsp;&nbsp;<a href="/show/ns1/Host={{ ct.0 }}">{{ ct.0 }}</a>&nbsp;&nbsp;
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+{#<script>#}
+{#    function b1(){#}
+{#         $('#t1').removeClass('hidden');#}
+{#              $('#t2').addClass('hidden')#}
+{#    }#}
+{#    function b2(){#}
+{#         $('#t1').addClass('hidden');#}
+{#              $('#t2').removeClass('hidden')#}
+{#    }#}
+{#</script>#}
+</body>
+</html>

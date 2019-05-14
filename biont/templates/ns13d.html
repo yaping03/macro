@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/Dashboard%20Template%20for%20Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+        a .btn{
+            text-decoration: none;
+            color:#fff;
+            font-family:"microsoft yahei","SF Pro SC","SF Pro Display","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
+        <div class="h3">NS1空间结构&nbsp;
+        <a href="/show/ns1/list"> <button class="btn btn-primary">禽流感NS1蛋白列表</button></a>
+        </div>
+
+{#        <div class="row">#}
+{#            <div class="form-group col-lg-2 form-inline">#}
+{#                <input type="text" class="form-control" id="keyword">#}
+{#            </div>#}
+{#            <div class="col-lg-1">#}
+{#                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo">#}
+{#            </div>#}
+{#            <div class="col-lg-1 pull-right">#}
+{#                <button type="button" class="form-control btn btn-success" id="add" data-toggle="modal"#}
+{#                        data-target="#myModal" formmethod="post">添加#}
+{#                </button>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+        <table class="table table-bordered table-striped table-hover text-center">
+            <tbody id="t1">
+            <tr>
+                <th class="text-center col-md-3">PDB_ID</th>
+                <th class="text-center col-md-3">Title</th>
+                <th class="text-center col-md-3">Method</th>
+                <th class="text-center col-md-3">Resolution</th>
+            </tr>
+{#            <tr>#}
+{#                <td>{{ obj.0.name }}</td>#}
+{#                <td>{{ obj.0.age }}</td>#}
+{#                <td>{{ obj.0.the_class }}</td>#}
+{#                <td>#}
+{#                    <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                    <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>{{ obj.1.name }}</td>#}
+{#                <td>{{ obj.1.age }}</td>#}
+{#                <td>{{ obj.1.the_class }}</td>#}
+{#                <td>#}
+{#                    <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                    <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>{{ obj.2.name }}</td>#}
+{#                <td>{{ obj.2.age }}</td>#}
+{#                <td>{{ obj.2.the_class }}</td>#}
+{#                <td>#}
+{#                    <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                    <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>{{ obj.3.name }}</td>#}
+{#                <td>{{ obj.3.age }}</td>#}
+{#                <td>{{ obj.3.the_class }}</td>#}
+{#                <td>#}
+{#                    <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                    <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                </td>#}
+{#            </tr>#}
+            {% for i in datas %}
+                <tr>
+                    <td style="vertical-align: middle;"><a href="/show/ns1_3d/detail/{{ i.PDB_ID }}">{{ i.PDB_ID }}</a> </td>
+                    <td style="vertical-align: middle;">{{ i.Title }}</td>
+                    <td style="vertical-align: middle;">{{ i.Method }}</td>
+                    <td style="vertical-align: middle;">{{ i.Resolution }}</td>
+{#                    <td>#}
+{#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                    </td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

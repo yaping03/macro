@@ -1,0 +1,170 @@
+{% load filters %}
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/Dashboard%20Template%20for%20Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        a .btn{
+            text-decoration: none;
+            color:#fff;
+            font-family:"microsoft yahei","SF Pro SC","SF Pro Display","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        }
+    .clo {
+        background-color: #204d74
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
+        <div class="h4">
+            <a href="/show/germ"> <button class="btn btn-primary">细菌</button></a>
+            <a href="/show/fungus"><button class="btn btn-primary">真菌</button></a>
+            <a href="/show/plasmid"><button class="btn btn-primary clo">质粒</button></a>
+            <a href="/show/cell"><button class="btn btn-primary">细胞</button></a>
+        </div>
+
+        <div class="h4">
+            <button id="b1" class="btn btn-primary clo" onclick="b1()">信息</button>
+            <button id="b2" class="btn btn-primary" onclick="b2()">其他</button>
+        </div>
+        <table class="table table-bordered table-striped table-hover text-center" id="t1">
+            <tbody>
+            <tr>
+                <th class="text-center col-md-1">保藏号</th>
+                <th class="text-center col-md-1">质粒名称</th>
+                <th class="text-center col-md-1">质粒类型</th>
+                <th class="text-center col-md-1">载体大小</th>
+                <th class="text-center col-md-1">载体标签</th>
+                <th class="text-center col-md-2">载体抗性</th>
+                <th class="text-center col-md-1">保存菌株</th>
+            </tr>
+            {% for i in datas %}
+                <tr>
+                    <td style="vertical-align: middle;"><a href="/show/plasmid/detail/{{ i.保藏号 }}">{{ i.保藏号 }}</a> </td>
+                    <td style="vertical-align: middle;">{{ i.质粒名称 }}</td>
+                    <td style="vertical-align: middle;">{{ i.质粒类型 }}</td>
+                    <td style="vertical-align: middle;">{{ i.载体大小 }}</td>
+                    <td style="vertical-align: middle;">{{ i.载体标签 }}</td>
+                    <td style="vertical-align: middle;">{{ i.载体抗性 }}</td>
+                    <td style="vertical-align: middle;">{{ i.保存菌株 }}</td>
+{#                    <td>#}
+{#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                    </td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <table class="table table-bordered table-striped table-hover text-center hidden" id="t2">
+            <tbody>
+            <tr>
+                <th class="text-center col-md-1">保藏号</th>
+                <th class="text-center col-md-1">质粒名称</th>
+                <th class="text-center col-md-1">质粒图谱</th>
+                <th class="text-center col-md-1">来源</th>
+                <th class="text-center col-md-1">保存时间</th>
+                <th class="text-center col-md-2">载体描述</th>
+                <th class="text-center col-md-1">备注</th>
+            </tr>
+            {% for i in datas %}
+                <tr>
+                    <td style="vertical-align: middle;"><a href="/show/plasmid/detail/{{ i.保藏号 }}">{{ i.保藏号 }}</a> </td>
+                    <td style="vertical-align: middle;">{{ i.质粒名称 }}</td>
+                    <td style="vertical-align: middle;">{{ i.质粒图谱 }}</td>
+                    <td style="vertical-align: middle;">{{ i.来源 }}</td>
+                    <td style="vertical-align: middle;">{{ i.保存时间 }}</td>
+                    <td style="vertical-align: middle;">{{ i.载体描述 }}</td>
+                    <td style="vertical-align: middle;">{{ i.备注 }}</td>
+{#                    <td>#}
+{#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
+{#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
+{#                    </td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{#    	<div>#}
+{#		<ul class="pagination" style="margin-left: 750px">#}
+{#         <li class="text-right"><a href="/show/germ">首页</a></li>#}
+{#			{% if knowledges.has_previous %}#}
+{#			<li class="text-right"><a href="{{ request|page:knowledges.previous_page_number }}">&laquo;上一页</a></li>#}
+{#			{% endif %}#}
+{##}
+{#			{% for p in rs  %}#}
+{#			<li#}
+{#			{% ifequal p knowledges.number %}#}
+{#				class="active"#}
+{#			{% endifequal %}#}
+{#			>#}
+{#				<a href="{{ request|page:p }}">#}
+{#					{{ p }}#}
+{#				</a>#}
+{#			</li>#}
+{#			{% endfor %}#}
+{##}
+{#			{% if knowledges.has_next %}#}
+{#			<li><a href="{{ request|page:knowledges.next_page_number }}">下一页&raquo;</a></li>#}
+{#			{% endif %}#}
+{#        <li class="text-right"><a href="/show/germ?page={{ knowledges.paginator.num_pages }}">尾页</a></li>#}
+{#        &nbsp;#}
+{#        <botton class="btn btn-primary">跳转</botton>#}
+{#		</ul>#}
+{#		<p class="text-right">第{{ knowledges.number }}页，共{{ knowledges.paginator.num_pages }}页</p>#}
+{#	</div>#}
+    </div>
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    function b1(){
+        $('#b2').removeClass('clo');
+        $("#b1").addClass('clo');
+         $('#t1').removeClass('hidden');
+        $('#t2').addClass('hidden')
+    }
+    function b2(){
+        $('#b1').removeClass('clo');
+        $("#b2").addClass('clo');
+         $('#t1').addClass('hidden');
+        $('#t2').removeClass('hidden')
+    }
+</script>
+</body>
+</html>

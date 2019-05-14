@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Dashboard%20Template%20for%20Bootstrap_files/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/Dashboard%20Template%20for%20Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+        .head {
+            margin: 0 -20px;
+            line-height: 40px;
+            cursor: pointer;
+            border-bottom: 1px solid #2c4cf5;
+        }
+        table{line-height: 30px}
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
+        <div class="h3">{{ obj.Title }}</div>
+{#        <div class="row">#}
+{#            <div class="form-group col-lg-2 form-inline">#}
+{#                <input type="text" class="form-control" id="keyword">#}
+{#            </div>#}
+{#            <div class="col-lg-1">#}
+{#                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo">#}
+{#            </div>#}
+{#            <div class="col-lg-1 pull-right">#}
+{#                <button type="button" class="form-control btn btn-success" id="add" data-toggle="modal"#}
+{#                        data-target="#myModal" formmethod="post">添加#}
+{#                </button>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+        <table class="text-center h4" style="height: 600px;margin-top: 50px">
+            <tbody id="t1">
+            <tr>
+                <th class="text-right col-md-1">Accession_id</th>
+                <td class="text-left col-md-2">{{ obj.Accession_id }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Sequence_name</th>
+                <td class="text-left col-md-2">{{ obj.Sequence_name }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Scientific_name</th>
+                <td class="text-left col-md-2">{{ obj.Scientific_name }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Taxonomic_identifier</th>
+                <td class="text-left col-md-2">{{ obj.Taxonomic_identifier }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Subtype</th>
+                <td class="text-left col-md-2">{{ obj.Subtype }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Host</th>
+                <td class="text-left col-md-2">{{ obj.Host }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Collection_year</th>
+                <td class="text-left col-md-2">{{ obj.Collection_year }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Country</th>
+                <td class="text-left col-md-2">{{ obj.Country }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Protein_attributes</th>
+                <td class="text-left col-md-2">{{ obj.Protein_attributes }}</td>
+            </tr>
+            <tr>
+                <th class="text-right col-md-1">Sequence</th>
+                <td class="text-left col-md-2"> <text> {{ obj.Sequence }}</text></td>
+            </tr>
+{#            <tr>#}
+{#                <th class="text-right col-md-1">Molecules</th>#}
+{#                <td class="text-center col-md-2">#}
+{#                   <table>#}
+{#                   <tr>#}
+{#                       <th class="text-right col-md-1">Chains:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Chains }}</td>#}
+{#                        </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Molecule:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Molecule }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Details:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Details }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Organism:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Organism }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Sequence:</th>#}
+{#                       <td class="text-center col-md-2"><a href="/show/ns1/{{ obj.Mole_Sequence }}">{{ obj.Mole_Sequence }}</a></td>#}
+{#                           </tr>#}
+{##}
+{#                   </table>#}
+{#                    <table>#}
+{#                        {% if obj.Mole_Chains1 %}#}
+{#                            <tr>#}
+{#                           <th class="text-right col-md-1">Chains:</th>#}
+{#                           <td class="text-center col-md-2">{{ obj.Mole_Chains1 }}</td>#}
+{#                            </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Molecule:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Molecule1 }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Details:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Details1 }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Organism:</th>#}
+{#                       <td class="text-center col-md-2">{{ obj.Mole_Organism1 }}</td>#}
+{#                           </tr>#}
+{#                       <tr>#}
+{#                       <th class="text-right col-md-1">Sequence:</th>#}
+{#                           <td class="text-center col-md-2"><a href="/show/ns1/{{ obj.Mole_Sequence }}">{{ obj.Mole_Sequence1 }}</a></td>#}
+{#                           </tr>#}
+{#                        {% endif %}#}
+{#                    </table>#}
+{#                </td>#}
+{#                <td class="text-left col-md-1">{{ obj.Mole_Chains }}</td>#}
+{#            </tr>#}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
