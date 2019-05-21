@@ -16,6 +16,19 @@ def page(request):
 	url = request.path.split("?")[0]
 	return url
 
+@register.filter(name='sp1')
+def sp1(request,taxonomic):
+	result = ""
+	if taxonomic:
+		result = taxonomic.split(" ")[0]
+	return result
+
+@register.filter(name='sp2')
+def sp2(request,taxonomic):
+	result = ""
+	if len(taxonomic.split(" "))>1:
+		result = taxonomic.split(" ")[1]
+	return result
 
 @register.filter(name='getlen')
 def getlen(request,Protein_attributes):

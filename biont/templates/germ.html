@@ -4,13 +4,13 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>菌种库</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -58,11 +58,20 @@
             <a href="/show/plasmid"><button class="btn btn-primary">质粒</button></a>
             <a href="/show/cell"><button class="btn btn-primary">细胞</button></a>
         </div>
-
-        <div class="h4">
+        <div class="row">
+{#        <div class="h3 col-lg-3">16sRNA列表</div>#}
+            <div class="h4 col-lg-3">
             <button id="b1" class="btn btn-primary clo" onclick="b1()">信息</button>
             <button id="b2" class="btn btn-primary" onclick="b2()">其他</button>
         </div>
+        <div class="form-group col-lg-2 form-inline col-lg-offset-4">
+                <input type="text" class="form-control" id="keyword">
+            </div>
+            <div class="col-lg-1">
+                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo">
+            </div>
+        </div>
+
         <table class="table table-bordered table-striped table-hover text-center" id="t1">
             <tbody>
             <tr>
@@ -72,7 +81,7 @@
                 <th class="text-center col-md-1">属</th>
                 <th class="text-center col-md-1">种</th>
                 <th class="text-center col-md-2">亚种</th>
-                <th class="text-center col-md-1">来源</th>
+                <th class="text-center col-md-1">数量</th>
             </tr>
             {% for i in knowledges %}
                 <tr>
@@ -82,7 +91,7 @@
                     <td style="vertical-align: middle;">{{ i.属 }}</td>
                     <td style="vertical-align: middle;">{{ i.种 }}</td>
                     <td style="vertical-align: middle;">{{ i.亚种 }}</td>
-                    <td style="vertical-align: middle;">{{ i.来源 }}</td>
+                    <td style="vertical-align: middle;">{{ i.数量 }}</td>
 {#                    <td>#}
 {#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
 {#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
@@ -96,21 +105,19 @@
             <tr>
                 <th class="text-center col-md-1">保藏号</th>
                 <th class="text-center col-md-1">名称</th>
-                <th class="text-center col-md-1">s_rna</th>
-                <th class="text-center col-md-1">其他库</th>
-                <th class="text-center col-md-1">保存形式</th>
-                <th class="text-center col-md-2">发表论文</th>
                 <th class="text-center col-md-1">保存时间</th>
+                <th class="text-center col-md-1">来源</th>
+                <th class="text-center col-md-1">特性</th>
+                <th class="text-center col-md-2">保存形式</th>
             </tr>
             {% for i in knowledges %}
                 <tr>
                     <td style="vertical-align: middle;"><a href="/show/germ/detail/{{ i.pre_no }}">{{ i.pre_no }}</a> </td>
                     <td style="vertical-align: middle;">{{ i.名称 }}</td>
-                    <td style="vertical-align: middle;">{{ i.s_rna }}</td>
-                    <td style="vertical-align: middle;">{{ i.其他库 }}</td>
-                    <td style="vertical-align: middle;">{{ i.保存形式 }}</td>
-                    <td style="vertical-align: middle;">{{ i.发表论文 }}</td>
                     <td style="vertical-align: middle;">{{ i.保存时间 }}</td>
+                    <td style="vertical-align: middle;">{{ i.来源 }}</td>
+                    <td style="vertical-align: middle;">{{ i.特性 }}</td>
+                    <td style="vertical-align: middle;">{{ i.保存形式 }}</td>
 {#                    <td>#}
 {#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
 {#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
@@ -121,7 +128,7 @@
         </table>
     	<div>
 		<ul class="pagination" style="float: right">
-         <li class="text-right"><a href="/show/germ">首页</a></li>
+         <li class="text-right"><a href="{{ request|sppage }}">首页</a></li>
 			{% if knowledges.has_previous %}
 			<li class="text-right"><a href="{{ request|page:knowledges.previous_page_number }}">&laquo;上一页</a></li>
 			{% endif %}
@@ -141,7 +148,7 @@
 			{% if knowledges.has_next %}
 			<li><a href="{{ request|page:knowledges.next_page_number }}">下一页&raquo;</a></li>
 			{% endif %}
-        <li class="text-right"><a href="/show/germ?page={{ knowledges.paginator.num_pages }}">尾页</a></li>
+        <li class="text-right"><a href="{{ request|sppage }}?page={{ knowledges.paginator.num_pages }}">尾页</a></li>
         &nbsp;
 {#        <botton class="btn btn-primary">跳转</botton>#}
         <p class="text-right" style="line-height: 50px">第{{ knowledges.number }}页，共{{ knowledges.paginator.num_pages }}页</p>
@@ -167,6 +174,12 @@
          $('#t1').addClass('hidden');
         $('#t2').removeClass('hidden')
     }
+</script>
+<script>
+    $("#sousuo").click(function () {
+{#        console.log($("#keyword").val());#}
+         window.location.href= "/show/germ/" + $("#keyword").val();
+    })
 </script>
 </body>
 </html>

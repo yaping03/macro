@@ -63,6 +63,7 @@ class Ns1_3d_detail(models.Model):
     Method = models.CharField(max_length=255)
     Resolution = models.FloatField(max_length=32)
     Reference = models.CharField(max_length=255)
+    Reference_url = models.CharField(max_length=255,default=" ")
     Author = models.CharField(max_length=255)
     Journal = models.CharField(max_length=255)
     Mole_Chains = models.CharField(max_length=64)

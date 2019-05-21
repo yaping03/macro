@@ -4,13 +4,13 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>NS1列表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -55,7 +55,17 @@
 <div class="container-fluid">
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
-    <div class="h3">Subtype</div>
+    <div class="row">
+    <div class="h3 col-lg-2">Subtype</div>
+    <div class="form-group col-lg-2 form-inline col-lg-offset-7">
+                <input type="text" class="form-control" id="keyword1">
+            </div>
+            <div class="col-lg-1">
+                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo1">
+            </div>
+    </div>
+
+
         <div class="h4 line">
             {% for seq in seqs %}
                 {% if seq.0 %}
@@ -63,17 +73,35 @@
                 {% endif %}
             {% endfor %}
         </div>
-    <div class="h3">Collection_year</div>
+    <div class="row">
+    <div class="h3 col-lg-2">Collection_year</div>
+    <div class="form-group col-lg-2 form-inline col-lg-offset-7">
+                <input type="text" class="form-control" id="keyword2">
+            </div>
+            <div class="col-lg-1">
+                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo2">
+            </div>
+    </div>
+{#    <div class="h3">Collection_year</div>#}
         <div class="h4 line">
-            {% for cy in cys %}
+            {% for cy in cyse %}
                 {% if cy.0 %}
                     &nbsp;&nbsp;<a href="/show/ns1/Collection_year={{ cy.0 }}">{{ cy.0 }}</a>&nbsp;&nbsp;
                 {% endif %}
             {% endfor %}
         </div>
-    <div class="h3">Host</div>
+    <div class="row">
+    <div class="h3 col-lg-2">Host</div>
+    <div class="form-group col-lg-2 form-inline col-lg-offset-7">
+                <input type="text" class="form-control" id="keyword3">
+            </div>
+            <div class="col-lg-1">
+                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo3">
+            </div>
+    </div>
+{#    <div class="h3">Host</div>#}
         <div class="h4 line">
-            {% for ct in cts %}
+            {% for ct in ctse %}
                 {% if ct.0 %}
                     &nbsp;&nbsp;<a href="/show/ns1/Host={{ ct.0 }}">{{ ct.0 }}</a>&nbsp;&nbsp;
                 {% endif %}
@@ -85,6 +113,20 @@
 
 <script src="/static/js/jquery.js"></script>
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#sousuo1").click(function () {
+{#        console.log($("#keyword1").val());#}
+         window.location.href= "/show/ns1/Subtype=" + $("#keyword1").val();
+    });
+    $("#sousuo2").click(function () {
+{#        console.log($("#keyword1").val());#}
+         window.location.href= "/show/ns1/Collection_year=" + $("#keyword2").val();
+    });
+    $("#sousuo3").click(function () {
+{#        console.log($("#keyword1").val());#}
+         window.location.href= "/show/ns1/Host=" + $("#keyword3").val();
+    })
+</script>
 {#<script>#}
 {#    function b1(){#}
 {#         $('#t1').removeClass('hidden');#}
@@ -97,3 +139,4 @@
 {#</script>#}
 </body>
 </html>
+

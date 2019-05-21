@@ -4,13 +4,13 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>NS1列表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -51,7 +51,9 @@
 <div class="container-fluid">
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 clearfix">
-        <div class="h3">NS1蛋白列表</div>
+        <div class="h3">NS1蛋白列表&nbsp;
+        <a href="/show/ns1/list"> <button class="btn btn-primary">NS1标签列表</button></a>
+        </div>
         <div id="csrf" class="hidden">{{ csrf_token }}</div>
         <div class="row">
         {% if Subtype %}
@@ -138,15 +140,9 @@
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
     $("#sousuo").click(function () {
-        console.log($("#keyword").val());
+{#        console.log($("#keyword").val());#}
          window.location.href= "/show/ns1/Sequnce_name=" + $("#keyword").val();
-{#        $.get("/show/ns1/Sequnce=" + $("#keyword").val());#}
-{#        $.ajax(#}
-{#            {#}
-{#                url: "/show/ns1/Sequnce=" + $("#keyword").val(),#}
-{#                type: "GET",#}
-{#                data: {no: $(this).find("td").first().text(), csrfmiddlewaretoken: $("#csrf").text()},#}
-{#            })#}
+
     })
 </script>
 </body>

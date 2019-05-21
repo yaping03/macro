@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import auth
 from ns1.models import Ns1_detail,Ns1_3d_detail,R16srna,Fungus_detail,Cell_detail,Plasmid_detail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 import json
 
 
@@ -45,11 +46,11 @@ def ns1(request,Subtype=""):
         dt = Subtype.split("=")[0]
         detail = Subtype.split("=")[1]
         if dt == "Subtype":
-            datas = Ns1_detail.objects.filter(Subtype=detail)
+            datas = Ns1_detail.objects.filter(Subtype__icontains=detail)
         elif dt == "Collection_year":
-            datas = Ns1_detail.objects.filter(Collection_year=detail)
+            datas = Ns1_detail.objects.filter(Collection_year__icontains=detail)
         elif dt == "Host":
-            datas = Ns1_detail.objects.filter(Host=detail)
+            datas = Ns1_detail.objects.filter(Host__icontains=detail)
         else:
             datas = Ns1_detail.objects.filter(Sequence_name__icontains=detail)
     else:
@@ -71,6 +72,15 @@ def ns1_list(request):
     seqs = Ns1_detail.objects.values_list("Subtype").distinct().order_by("Subtype")
     cys = Ns1_detail.objects.values_list("Collection_year").distinct().order_by("Collection_year")
     cts = Ns1_detail.objects.values_list("Host").distinct().order_by("Host")
+    cyse = []
+    ctse = []
+    for cy in cys:
+        if cy[0] and cy[0].isdigit() and 1000 < int(cy[0]) < 2020:
+            cyse.append((cy))
+    for cy in cts:
+        if cy[0] and len(cy[0]) < 8:
+            ctse.append((cy))
+
 
     return render(request, "ns1_list.html", locals())
 
@@ -95,9 +105,12 @@ def ns1_3d_detail(request,PDB_ID):
     else:
         return HttpResponse("404 not find")
 
-def r16srna(request):
+def r16srna(request,value=""):
     if request.method=="GET":
-        datas = R16srna.objects.all()
+        if value:
+            datas = R16srna.objects.filter(Q(Genus__icontains=value)|Q(Species__icontains=value)|Q(Subspecies__icontains=value)|Q(NO__icontains=value))
+        else:
+            datas = R16srna.objects.all()
         paginator = Paginator(datas, 15)
         page = request.GET.get('page')
         try:
@@ -119,8 +132,11 @@ def r16srna(request):
 
         return HttpResponse(json.dumps(res))
 
-def germ(request):
-    datas = Fungus_detail.objects.filter(pre_no__contains="LNUB")
+def germ(request,value=""):
+    if value:
+        datas = Fungus_detail.objects.filter(Q(pre_no__contains="LNUB")&(Q(pre_no__icontains=value)|Q(名称__icontains=value)|Q(别名__icontains=value)|Q(属__icontains=value)|Q(种__icontains=value)))
+    else:
+        datas = Fungus_detail.objects.filter(pre_no__contains="LNUB")
     paginator = Paginator(datas, 25)
     page = request.GET.get('page')
     try:

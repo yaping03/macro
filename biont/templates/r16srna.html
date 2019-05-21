@@ -4,13 +4,13 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>16srna</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -55,7 +55,15 @@
 <div class="container-fluid">
 
     <div class="col-sm-7 col-sm-offset-3 col-md-7 col-md-offset-1 clearfix">
-        <div class="h3">16sRNA列表</div>
+    <div class="row">
+    <div class="h3 col-lg-3">16sRNA列表</div>
+    <div class="form-group col-lg-3 form-inline col-lg-offset-4">
+                <input type="text" class="form-control" id="keyword">
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" class="form-control btn btn-primary" value="搜索" id="sousuo">
+            </div>
+    </div>
             <div id="csrf" style="display: none">{{ csrf_token  }}</div>
 {#        <div class="row">#}
 {#            <div class="form-group col-lg-2 form-inline">#}
@@ -95,7 +103,8 @@
         </table>
     	<div>
 		<ul class="pagination" style="float: right">
-         <li class="text-right"><a href="/show/16srna">首页</a></li>
+{#         <li class="text-right"><a href="/show/16srna">首页</a></li>#}
+        <li class="text-right"><a href="{{ request|sppage }}">首页</a></li>
 			{% if knowledges.has_previous %}
 			<li class="text-right"><a href="{{ request|page:knowledges.previous_page_number }}">&laquo;上一页</a></li>
 			{% endif %}
@@ -115,7 +124,8 @@
 			{% if knowledges.has_next %}
 			<li><a href="{{ request|page:knowledges.next_page_number }}">下一页&raquo;</a></li>
 			{% endif %}
-        <li class="text-right"><a href="/show/16srna?page={{ knowledges.paginator.num_pages }}">尾页</a></li>
+{#        <li class="text-right"><a href="/show/16srna?page={{ knowledges.paginator.num_pages }}">尾页</a></li>#}
+        <li class="text-right"><a href="{{ request|sppage }}?page={{ knowledges.paginator.num_pages }}">尾页</a></li>
         &nbsp;
 {#        <botton class="btn btn-primary">跳转</botton>#}
 
@@ -169,7 +179,7 @@
         console.log($("#csrf").text()),
         $.ajax(
             {
-                url: "/show/16srna",
+                url: "/show/16srna/",
                 type: "POST",
                 data: {no: $(this).find("td").first().text(),csrfmiddlewaretoken:$("#csrf").text()},
 
@@ -177,11 +187,22 @@
                     $("#t2").removeClass("hidden");
                     rnas = JSON.parse(data);
                     for(var i=0;i < rnas.length;i++){
-                        console.log($(".show")[i].innerText= rnas[i])
-                    }
+                        if (i!=5){
+                            $(".show")[i].innerText= rnas[i]
+                        }
+                        else {
+                            $(".show")[i].innerHTML = '<a href="http://www.ncbi.nlm.nih.gov/nuccore/' + rnas[i] + '">'+rnas[i]+'</a>'
+                        }}
                 }
             })
 
+    })
+
+</script>
+<script>
+    $("#sousuo").click(function () {
+{#        console.log($("#keyword").val());#}
+         window.location.href= "/show/16srna/" + $("#keyword").val();
     })
 </script>
 </body>

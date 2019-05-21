@@ -4,13 +4,13 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>菌种库</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -70,8 +70,9 @@
                 <th class="text-center col-md-1">质粒类型</th>
                 <th class="text-center col-md-1">载体大小</th>
                 <th class="text-center col-md-1">载体标签</th>
-                <th class="text-center col-md-2">载体抗性</th>
-                <th class="text-center col-md-1">保存菌株</th>
+                <th class="text-center col-md-2">来源</th>
+                <th class="text-center col-md-2">保存时间</th>
+
             </tr>
             {% for i in datas %}
                 <tr>
@@ -80,8 +81,8 @@
                     <td style="vertical-align: middle;">{{ i.质粒类型 }}</td>
                     <td style="vertical-align: middle;">{{ i.载体大小 }}</td>
                     <td style="vertical-align: middle;">{{ i.载体标签 }}</td>
-                    <td style="vertical-align: middle;">{{ i.载体抗性 }}</td>
-                    <td style="vertical-align: middle;">{{ i.保存菌株 }}</td>
+                    <td style="vertical-align: middle;">{{ i.来源 }}</td>
+                    <td style="vertical-align: middle;">{{ i.保存时间 }}</td>
 {#                    <td>#}
 {#                        <button class="btn btn-success edit"><span class="glyphicon glyphicon-pencil"></span>编辑</button>#}
 {#                        <button class="btn btn-danger del"><span class="glyphicon glyphicon-remove"></span>删除</button>#}
@@ -96,8 +97,8 @@
                 <th class="text-center col-md-1">保藏号</th>
                 <th class="text-center col-md-1">质粒名称</th>
                 <th class="text-center col-md-1">质粒图谱</th>
-                <th class="text-center col-md-1">来源</th>
-                <th class="text-center col-md-1">保存时间</th>
+                <th class="text-center col-md-2">载体抗性</th>
+                <th class="text-center col-md-1">保存菌株</th>
                 <th class="text-center col-md-2">载体描述</th>
                 <th class="text-center col-md-1">备注</th>
             </tr>
@@ -106,8 +107,8 @@
                     <td style="vertical-align: middle;"><a href="/show/plasmid/detail/{{ i.保藏号 }}">{{ i.保藏号 }}</a> </td>
                     <td style="vertical-align: middle;">{{ i.质粒名称 }}</td>
                     <td style="vertical-align: middle;">{{ i.质粒图谱 }}</td>
-                    <td style="vertical-align: middle;">{{ i.来源 }}</td>
-                    <td style="vertical-align: middle;">{{ i.保存时间 }}</td>
+                    <td style="vertical-align: middle;">{{ i.载体抗性 }}</td>
+                    <td style="vertical-align: middle;">{{ i.保存菌株 }}</td>
                     <td style="vertical-align: middle;">{{ i.载体描述 }}</td>
                     <td style="vertical-align: middle;">{{ i.备注 }}</td>
 {#                    <td>#}

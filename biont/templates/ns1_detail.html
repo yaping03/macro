@@ -1,15 +1,16 @@
+{% load filters %}
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <title>NS1列表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/static/imgs/logo.jpg">
 
     <title>Dashboard Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -69,20 +70,21 @@
         <table class="text-center h4" style="height: 600px;margin-top: 50px">
             <tbody id="t1">
             <tr>
-                <th class="text-right col-md-1">Accession_id</th>
+                <th class="text-right col-md-1">Accession id</th>
                 <td class="text-left col-md-2">{{ obj.Accession_id }}</td>
             </tr>
             <tr>
-                <th class="text-right col-md-1">Sequence_name</th>
+                <th class="text-right col-md-1">Sequence name</th>
                 <td class="text-left col-md-2">{{ obj.Sequence_name }}</td>
             </tr>
             <tr>
-                <th class="text-right col-md-1">Scientific_name</th>
+                <th class="text-right col-md-1">Scientific name</th>
                 <td class="text-left col-md-2">{{ obj.Scientific_name }}</td>
             </tr>
             <tr>
-                <th class="text-right col-md-1">Taxonomic_identifier</th>
-                <td class="text-left col-md-2">{{ obj.Taxonomic_identifier }}</td>
+                <th class="text-right col-md-1">Taxonomic identifier</th>
+                <td class="text-left col-md-2"><a href="http://www.uniprot.org/taxonomy/{{ obj.Taxonomic_identifier|sp1:obj.Taxonomic_identifier }}">{{ obj.Taxonomic_identifier|sp1:obj.Taxonomic_identifier}}</a>
+                    <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?lvl=0&id={{ obj.Taxonomic_identifier|sp1:obj.Taxonomic_identifier }}">[{{ obj.Taxonomic_identifier|sp2:obj.Taxonomic_identifier}}]</a></td>
             </tr>
             <tr>
                 <th class="text-right col-md-1">Subtype</th>
@@ -93,7 +95,7 @@
                 <td class="text-left col-md-2">{{ obj.Host }}</td>
             </tr>
             <tr>
-                <th class="text-right col-md-1">Collection_year</th>
+                <th class="text-right col-md-1">Collection year</th>
                 <td class="text-left col-md-2">{{ obj.Collection_year }}</td>
             </tr>
             <tr>
@@ -101,7 +103,7 @@
                 <td class="text-left col-md-2">{{ obj.Country }}</td>
             </tr>
             <tr>
-                <th class="text-right col-md-1">Protein_attributes</th>
+                <th class="text-right col-md-1">Protein attributes</th>
                 <td class="text-left col-md-2">{{ obj.Protein_attributes }}</td>
             </tr>
             <tr>

@@ -18,6 +18,8 @@ urlpatterns = [
     path('ns1_3d/detail/<str:PDB_ID>',comm.ns1_3d_detail),
     path('ns1/list',comm.ns1_list),
     path('ns1/<str:Subtype>',comm.ns1),
+    path('16srna/<str:value>',comm.r16srna),
+    path('germ/<str:value>',comm.germ),
     path('ns1/detail/<str:Accession_id>',comm.ns1_detail),
     path('16srna/',comm.r16srna),
     # path('regist',comm.regist),
